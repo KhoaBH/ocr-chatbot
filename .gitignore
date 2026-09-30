@@ -1,0 +1,30 @@
+# Secrets (không commit key)
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Milvus Lite (database local)
+data/milvus.db
+data/.milvus.db.lock
+*.db.lock
+
+# Screenshot tạm khi OCR (giữ lại .gitkeep để git vẫn có thư mục temp/)
+temp/*
+!temp/.gitkeep
+
+# Streamlit
+.streamlit/secrets.toml
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
