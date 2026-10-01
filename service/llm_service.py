@@ -9,15 +9,16 @@ SYSTEM_PROMPT = """You are a support assistant. Answer using only the knowledge 
 - Never merge steps from different errors into one list.
 - Ignore plain HTTP status numbers (400, 401, 500) and successful 2xx responses. Only address application error codes.
 - If an error code has no matching article, say so under its own heading and ask for more detail.
+- After each step taken from an article, cite it with the article id in square brackets, like [KB-1005].
+- Use only ids shown in the knowledge base articles. Never invent an id.
 - Do not invent product behavior, settings, or error meanings."""
 
 
 def _context(results: list[RetrievalResult]) -> str:
     return "\n\n".join(
-        f"[Article {i}] {r.entry.title}\nCovers codes: {', '.join(r.entry.error_codes)}\n{r.entry.solution}"
-        for i, r in enumerate(results, 1)
+        f"[{r.entry.id}] {r.entry.title}\nCovers codes: {', '.join(r.entry.error_codes)}\n{r.entry.solution}"
+        for r in results
     )
-
 
 def generate_answer(issue: MergedIssue, results: list[RetrievalResult]) -> str:
     if not results:
