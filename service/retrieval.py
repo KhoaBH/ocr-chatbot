@@ -20,7 +20,14 @@ def search(issue: MergedIssue, per_query: int = 2) -> list[RetrievalResult]:
         raise RuntimeError("Milvus collection not found. Run the ingest script first.")
     client.load_collection(collection_name=config.MILVUS_COLLECTION)
 
-    queries = [q for q in [issue.query.strip(), *issue.error_codes] if q and not q.isdigit()]
+    SKIP = {"please look at this screenshot."}
+
+    queries = [
+        q for q in dict.fromkeys(
+            [issue.description.strip(), issue.query.strip(), *issue.error_codes]
+        )
+        if q and not q.isdigit() and q.lower() not in SKIP
+    ]
     if not queries:
         return []
 
@@ -46,6 +53,7 @@ def search(issue: MergedIssue, per_query: int = 2) -> list[RetrievalResult]:
             )
             matched = len(codes & {c.lower() for c in entry.error_codes})
             score = round(hit["distance"] + CODE_BOOST * matched, 3)
+            print(entry.id, entry.title, round(hit["distance"], 3), score)
             if score >= config.MIN_SCORE:
                 scored.append(RetrievalResult(entry=entry, score=score))
         scored.sort(key=lambda r: r.score, reverse=True)

@@ -27,6 +27,7 @@ def extract_from_image(image_bytes: bytes | None) -> ImageExtraction:
         image = np.array(Image.open(BytesIO(image_bytes)).convert("RGB"))
         rows, _ = _ocr_engine()(image)
         text = " ".join(str(row[1]) for row in (rows or []) if len(row) > 1 and row[1]).strip()
+        print(f"OCR read {len(text.split())} words from screenshot")
         codes = extract_from_text(text).error_codes
         return ImageExtraction(
             text=text, error_codes=codes, available=True, note=f"{len(text.split())} words read"
