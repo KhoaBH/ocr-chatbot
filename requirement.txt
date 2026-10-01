@@ -1,8 +1,6 @@
 pillow
 rapidocr-onnxruntime
 
-sentence-transformers
-
 pymilvus
 milvus-lite
 

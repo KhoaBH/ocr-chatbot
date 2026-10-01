@@ -17,10 +17,6 @@ data/milvus_lite.db/
 data/.milvus.db.lock
 *.db.lock
 
-# Screenshot tạm khi OCR (giữ lại .gitkeep để git vẫn có thư mục temp/)
-temp/*
-!temp/.gitkeep
-
 # Streamlit
 .streamlit/secrets.toml
 
