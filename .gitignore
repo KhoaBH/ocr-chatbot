@@ -13,6 +13,7 @@ venv/
 
 # Milvus Lite (database local)
 data/milvus.db
+data/milvus_lite.db/
 data/.milvus.db.lock
 *.db.lock
 

@@ -1,5 +1,5 @@
 pillow
-pytesseract
+rapidocr-onnxruntime
 
 sentence-transformers
 

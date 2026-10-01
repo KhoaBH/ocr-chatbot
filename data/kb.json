@@ -1,0 +1,379 @@
+[
+  {
+    "id": "KB-1001",
+    "title": "Invalid Login Credentials",
+    "error_codes": ["INVALID_CREDENTIALS"],
+    "keywords": [
+      "can't log in",
+      "wrong password",
+      "login failed",
+      "invalid email or password",
+      "unable to sign in"
+    ],
+    "solution": "Verify the customer is using the correct email address and check for typos or extra spaces. Advise them to use the 'Forgot Password' flow to reset their password. If the issue persists after a reset, escalate to the account security team."
+  },
+  {
+    "id": "KB-1002",
+    "title": "Account Locked After Failed Logins",
+    "error_codes": ["ACCOUNT_LOCKED"],
+    "keywords": [
+      "account locked",
+      "too many attempts",
+      "locked out",
+      "can't access account",
+      "login blocked"
+    ],
+    "solution": "Inform the customer that the account is temporarily locked due to multiple failed login attempts. Advise them to wait 15-30 minutes before trying again, or use the password reset flow to regain access. If the lock persists beyond the expected window, escalate to the account security team."
+  },
+  {
+    "id": "KB-1003",
+    "title": "Email Already Registered",
+    "error_codes": ["EMAIL_ALREADY_REGISTERED"],
+    "keywords": [
+      "email already in use",
+      "can't register",
+      "account already exists",
+      "duplicate email",
+      "signup failed"
+    ],
+    "solution": "Inform the customer that an account with this email already exists. Direct them to the login page or the password reset flow if they've forgotten their credentials. If they believe this is an error, escalate to the account team to investigate."
+  },
+  {
+    "id": "KB-1004",
+    "title": "Password Too Weak",
+    "error_codes": ["WEAK_PASSWORD"],
+    "keywords": [
+      "password too short",
+      "weak password",
+      "password requirements",
+      "can't set password",
+      "registration failed"
+    ],
+    "solution": "Tell the customer the password must meet the minimum length requirement. Advise them to choose a longer password, ideally 12 or more characters. If they continue to see the error after meeting the requirement, escalate to the engineering team."
+  },
+  {
+    "id": "KB-1005",
+    "title": "Session Expired",
+    "error_codes": ["SESSION_EXPIRED"],
+    "keywords": [
+      "session expired",
+      "logged out",
+      "please log in again",
+      "token expired",
+      "authentication failed"
+    ],
+    "solution": "Instruct the customer to log in again to obtain a fresh session token. If they were in the middle of a task, confirm whether any data was lost. If sessions expire unusually quickly or repeatedly, escalate to the engineering team."
+  },
+  {
+    "id": "KB-1006",
+    "title": "Invalid Two-Factor Code",
+    "error_codes": ["INVALID_2FA_CODE"],
+    "keywords": [
+      "2fa code wrong",
+      "verification code invalid",
+      "two factor failed",
+      "code expired",
+      "can't verify identity"
+    ],
+    "solution": "Ask the customer to request a new two-factor code and enter it promptly, as codes expire quickly. Ensure they are using the most recent code and not an older one. If the issue persists, escalate to the account security team to verify their identity through alternate means."
+  },
+  {
+    "id": "KB-1007",
+    "title": "Email Not Verified",
+    "error_codes": ["EMAIL_NOT_VERIFIED"],
+    "keywords": [
+      "verify email",
+      "email not confirmed",
+      "can't access account",
+      "verification link",
+      "account blocked"
+    ],
+    "solution": "Inform the customer that they need to verify their email address before proceeding. Advise them to check their inbox and spam folder for the verification email and click the link. If they haven't received it, offer to resend the verification email; if resend fails, escalate to the account team."
+  },
+  {
+    "id": "KB-1008",
+    "title": "Card Declined",
+    "error_codes": ["card_declined"],
+    "keywords": [
+      "card declined",
+      "payment failed",
+      "card rejected",
+      "can't pay",
+      "payment not going through"
+    ],
+    "solution": "Ask the customer to verify their card details are correct and that the card is still active. Suggest trying a different payment method or contacting their bank, as the decline may be on the issuer's side. If the decline continues with a valid card, escalate to the payments team."
+  },
+  {
+    "id": "KB-1009",
+    "title": "Insufficient Funds",
+    "error_codes": ["insufficient_funds"],
+    "keywords": [
+      "insufficient funds",
+      "not enough money",
+      "payment failed",
+      "low balance",
+      "card declined"
+    ],
+    "solution": "Inform the customer that their card was declined due to insufficient funds. Advise them to use a different payment method or ensure sufficient funds are available before retrying. Do not retry the charge automatically; let the customer initiate a new payment."
+  },
+  {
+    "id": "KB-1010",
+    "title": "Expired Card",
+    "error_codes": ["expired_card"],
+    "keywords": [
+      "card expired",
+      "expiration date",
+      "old card",
+      "payment failed",
+      "card no longer valid"
+    ],
+    "solution": "Ask the customer to check the expiration date on their card and update their payment method with a current card. Once updated, they can retry the payment. If they believe the card is still valid, advise them to contact their bank."
+  },
+  {
+    "id": "KB-1011",
+    "title": "Incorrect CVC",
+    "error_codes": ["incorrect_cvc"],
+    "keywords": [
+      "cvc wrong",
+      "security code incorrect",
+      "cvv error",
+      "payment failed",
+      "card verification"
+    ],
+    "solution": "Ask the customer to re-enter the CVC/CVV security code from the back of their card (or front for some cards). Ensure they are not confusing it with the card number or PIN. If the error persists with the correct code, suggest trying a different card or escalating to the payments team."
+  },
+  {
+    "id": "KB-1012",
+    "title": "Incorrect Card Number",
+    "error_codes": ["incorrect_number"],
+    "keywords": [
+      "wrong card number",
+      "card number invalid",
+      "payment failed",
+      "card details incorrect",
+      "can't process payment"
+    ],
+    "solution": "Ask the customer to carefully re-enter their full card number, checking for typos or missing digits. Confirm they are using the correct card and that it hasn't been replaced. If the number is correct and the error persists, suggest a different payment method or escalate to the payments team."
+  },
+  {
+    "id": "KB-1013",
+    "title": "Duplicate Transaction",
+    "error_codes": ["duplicate_transaction"],
+    "keywords": [
+      "duplicate charge",
+      "charged twice",
+      "double payment",
+      "payment already submitted",
+      "repeat transaction"
+    ],
+    "solution": "Inform the customer that an identical charge was submitted very recently and was blocked as a likely duplicate. Confirm whether they intended to make a second payment. If the original charge is legitimate and they need to pay again, wait a few minutes before retrying; if they see two charges on their statement, escalate to the payments team."
+  },
+  {
+    "id": "KB-1014",
+    "title": "Generic Card Decline",
+    "error_codes": ["generic_decline"],
+    "keywords": [
+      "card declined",
+      "payment failed",
+      "unknown decline",
+      "card not accepted",
+      "transaction rejected"
+    ],
+    "solution": "Inform the customer that the card was declined for an unspecified reason. Advise them to contact their bank for details, as the issuer may have flagged the transaction. Suggest trying a different payment method if the issue continues."
+  },
+  {
+    "id": "KB-1015",
+    "title": "Currency Not Supported",
+    "error_codes": ["CURRENCY_NOT_SUPPORTED"],
+    "keywords": [
+      "currency not supported",
+      "unsupported currency",
+      "can't pay in this currency",
+      "payment currency error",
+      "currency rejected"
+    ],
+    "solution": "Inform the customer that the attempted currency is not supported for charges. Advise them to switch to a supported currency or payment method. If they need to pay in a specific currency, escalate to the payments team to check for alternatives."
+  },
+  {
+    "id": "KB-1016",
+    "title": "Order Not Found",
+    "error_codes": ["ORDER_NOT_FOUND"],
+    "keywords": [
+      "order not found",
+      "can't find order",
+      "order missing",
+      "wrong order id",
+      "order doesn't exist"
+    ],
+    "solution": "Ask the customer to double-check the order ID for typos and confirm they are using the correct account. If the order was placed under a different email or account, help them locate it. If the order truly cannot be found, escalate to the orders team to investigate."
+  },
+  {
+    "id": "KB-1017",
+    "title": "Order Already Shipped",
+    "error_codes": ["ORDER_ALREADY_SHIPPED"],
+    "keywords": [
+      "can't cancel",
+      "order already shipped",
+      "cancel too late",
+      "order on its way",
+      "shipped already"
+    ],
+    "solution": "Inform the customer that the order has already shipped and cannot be canceled. Advise them to wait for delivery and then initiate a return if needed. If they need special handling, escalate to the orders team."
+  },
+  {
+    "id": "KB-1018",
+    "title": "Order Already Canceled",
+    "error_codes": ["ORDER_ALREADY_CANCELED"],
+    "keywords": [
+      "already canceled",
+      "cancel failed",
+      "order canceled already",
+      "can't cancel again",
+      "duplicate cancellation"
+    ],
+    "solution": "Confirm for the customer that the order is already canceled and no further action is needed. If they were charged, reassure them that a refund should be processed according to the standard timeline. If they see unexpected charges, escalate to the payments team."
+  },
+  {
+    "id": "KB-1019",
+    "title": "Order Limit Exceeded",
+    "error_codes": ["QUOTA_EXCEEDED"],
+    "keywords": [
+      "order limit reached",
+      "quota exceeded",
+      "can't place order",
+      "plan limit",
+      "too many orders"
+    ],
+    "solution": "Inform the customer that their account has reached its plan's order limit. Explain that they can upgrade their plan or wait until the next billing cycle for the limit to reset. If they believe the limit is incorrect, escalate to the billing team."
+  },
+  {
+    "id": "KB-1020",
+    "title": "Insufficient Stock",
+    "error_codes": ["INSUFFICIENT_STOCK"],
+    "keywords": [
+      "out of stock",
+      "not enough inventory",
+      "stock unavailable",
+      "can't fulfill quantity",
+      "item unavailable"
+    ],
+    "solution": "Inform the customer that the requested quantity exceeds available stock. Suggest reducing the quantity or choosing a different item. If they need a large order, escalate to the orders team to check for restock timelines."
+  },
+  {
+    "id": "KB-1021",
+    "title": "Invalid Coupon",
+    "error_codes": ["INVALID_COUPON"],
+    "keywords": [
+      "coupon not working",
+      "invalid coupon",
+      "promo code expired",
+      "discount code failed",
+      "coupon rejected"
+    ],
+    "solution": "Ask the customer to verify the coupon code for typos and check the expiration date. Confirm the code applies to the items in their order. If the code should be valid, escalate to the promotions team to investigate."
+  },
+  {
+    "id": "KB-1022",
+    "title": "File Too Large",
+    "error_codes": ["FILE_TOO_LARGE"],
+    "keywords": [
+      "file too big",
+      "upload size limit",
+      "can't upload file",
+      "file exceeds limit",
+      "large file error"
+    ],
+    "solution": "Inform the customer that the file exceeds the maximum allowed size. Advise them to compress the file or split it into smaller parts before uploading. If they need a higher limit, escalate to the engineering team."
+  },
+  {
+    "id": "KB-1023",
+    "title": "Unsupported File Type",
+    "error_codes": ["UNSUPPORTED_FILE_TYPE"],
+    "keywords": [
+      "file type not allowed",
+      "unsupported format",
+      "can't upload this file",
+      "invalid file extension",
+      "wrong file type"
+    ],
+    "solution": "Inform the customer that the file type is not supported. Advise them to convert the file to a supported format before uploading. If they need to upload a specific format, escalate to the engineering team to check for alternatives."
+  },
+  {
+    "id": "KB-1024",
+    "title": "Upload Failed",
+    "error_codes": ["UPLOAD_FAILED"],
+    "keywords": [
+      "upload failed",
+      "file corrupted",
+      "can't upload",
+      "upload error",
+      "file processing failed"
+    ],
+    "solution": "Ask the customer to verify the file is not corrupted by opening it locally. Suggest re-saving or re-exporting the file and trying the upload again. If the upload continues to fail, escalate to the engineering team with the file details."
+  },
+  {
+    "id": "KB-1025",
+    "title": "Integration Disconnected",
+    "error_codes": ["INTEGRATION_DISCONNECTED"],
+    "keywords": [
+      "integration disconnected",
+      "app disconnected",
+      "third party auth expired",
+      "reconnect app",
+      "integration not working"
+    ],
+    "solution": "Inform the customer that the connected third-party app's authentication has expired or been revoked. Advise them to reconnect the integration from their account settings. If reconnection fails, escalate to the integrations team."
+  },
+  {
+    "id": "KB-1026",
+    "title": "Sync Conflict",
+    "error_codes": ["SYNC_CONFLICT"],
+    "keywords": [
+      "sync conflict",
+      "data conflict",
+      "sync failed",
+      "manual resolution needed",
+      "integration sync error"
+    ],
+    "solution": "Inform the customer that a data conflict has caused the sync to fail and manual resolution is required. Help them identify the conflicting records and choose which version to keep. If the conflict cannot be resolved, escalate to the integrations team."
+  },
+  {
+    "id": "KB-1027",
+    "title": "Internal Server Error",
+    "error_codes": ["INTERNAL_SERVER_ERROR"],
+    "keywords": [
+      "internal server error",
+      "something went wrong",
+      "500 error",
+      "server error",
+      "unexpected error"
+    ],
+    "solution": "Inform the customer that an unexpected server-side error occurred. Ask them to retry the action after a few minutes. If the error persists, escalate to the engineering team with the timestamp and any relevant details."
+  },
+  {
+    "id": "KB-1028",
+    "title": "Gateway Timeout",
+    "error_codes": ["GATEWAY_TIMEOUT"],
+    "keywords": [
+      "gateway timeout",
+      "request timed out",
+      "504 error",
+      "server not responding",
+      "timeout error"
+    ],
+    "solution": "Inform the customer that the request took too long to complete. Ask them to retry after a short wait. If timeouts are frequent or affect critical operations, escalate to the engineering team with details of the request."
+  },
+  {
+    "id": "KB-1029",
+    "title": "Resource Not Found",
+    "error_codes": ["NOT_FOUND"],
+    "keywords": [
+      "not found",
+      "404 error",
+      "page doesn't exist",
+      "resource missing",
+      "broken link"
+    ],
+    "solution": "Inform the customer that the requested route or resource does not exist. Ask them to check the URL for typos or confirm the resource hasn't been moved or deleted. If they believe the resource should exist, escalate to the engineering team."
+  }
+]

@@ -1,10 +1,9 @@
 from functools import lru_cache
 
-from pymilvus import MilvusClient
-
 import config
 from models import KBEntry, MergedIssue, RetrievalResult
-from services.embeddings import embed
+from service.embedding import embed
+from pymilvus import MilvusClient
 
 OUTPUT_FIELDS = ["title", "solution", "error_codes", "keywords"]
 CODE_BOOST = 0.15  # added per matching error code, so exact codes outrank fuzzy matches
@@ -19,8 +18,9 @@ def search(issue: MergedIssue, top_k: int = 3) -> list[RetrievalResult]:
     client = get_milvus()
     if not client.has_collection(config.MILVUS_COLLECTION):
         raise RuntimeError(
-            "Milvus collection not found. Run: python -m scripts.ingest_kb"
+            "Milvus collection not found. Run: python -m script.ingest_kb"
         )
+    client.load_collection(collection_name=config.MILVUS_COLLECTION)
 
     query = issue.query.strip()
     if not query:

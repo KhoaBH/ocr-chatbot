@@ -1,6 +1,6 @@
 import config
 from models import MergedIssue, RetrievalResult
-from services.azure_client import get_client
+from service.azure_client import get_client
 
 SYSTEM_PROMPT = """You are a support assistant. Answer using only the knowledge base articles provided.
 - Give clear, numbered steps the user can follow.

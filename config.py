@@ -17,12 +17,21 @@ def _endpoint() -> str:
 
 AZURE_BASE_URL = _endpoint()
 AZURE_API_KEY = os.getenv("AZURE_OPENAI_API_KEY", "")
-CHAT_DEPLOYMENT = os.getenv("CHAT_DEPLOYMENT", "gpt-6-luna")
-EMBEDDING_DEPLOYMENT = os.getenv("EMBEDDING_DEPLOYMENT", "text-embedding-3-small")
+CHAT_DEPLOYMENT = os.getenv(
+    "CHAT_DEPLOYMENT", os.getenv("AZURE_LLM_DEPLOYMENT", "gpt-6-luna")
+)
+EMBEDDING_DEPLOYMENT = os.getenv(
+    "EMBEDDING_DEPLOYMENT",
+    os.getenv("AZURE_EMBEDDING_DEPLOYMENT", "text-embedding-3-small"),
+)
 EMBEDDING_DIM = 1536  # text-embedding-3-small
 
-_uri = os.getenv("MILVUS_URI", "./data/milvus.db")
-MILVUS_URI = str(ROOT / _uri) if _uri.endswith(".db") and not os.path.isabs(_uri) else _uri
+_uri = os.getenv("MILVUS_DB_PATH", os.getenv("MILVUS_URI", "./data/milvus_lite.db"))
+MILVUS_URI = (
+    str((ROOT / _uri).resolve())
+    if _uri.endswith(".db") and not os.path.isabs(_uri)
+    else _uri
+)
 MILVUS_COLLECTION = os.getenv("MILVUS_COLLECTION", "support_kb")
 MIN_SCORE = float(os.getenv("MIN_SCORE", "0.25"))
 KB_PATH = ROOT / "data" / "kb.json"

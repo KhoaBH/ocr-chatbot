@@ -1,15 +1,23 @@
-"""Embed data/kb.json and load it into Milvus. Run from chatbot/: python -m scripts.ingest_kb"""
+"""Embed data/kb.json and load it into Milvus. Run from chatbot/: python -m script.ingest_kb"""
 import json
 
-from pymilvus import MilvusClient
-
 import config
-from services.embeddings import embed
+from service.embedding import embed
+from pymilvus import MilvusClient
 
 
 def main() -> None:
     with open(config.KB_PATH, encoding="utf-8") as f:
         entries = json.load(f)
+
+    if not entries:
+        raise RuntimeError(f"Knowledge base is empty: {config.KB_PATH}")
+    required = {"id", "title", "error_codes", "keywords", "solution"}
+    for index, entry in enumerate(entries, 1):
+        missing = required - entry.keys()
+        if missing:
+            names = ", ".join(sorted(missing))
+            raise ValueError(f"KB entry {index} is missing fields: {names}")
 
     texts = [
         f'{e["title"]}. {" ".join(e["keywords"])}. {" ".join(e["error_codes"])}. {e["solution"]}'
@@ -41,6 +49,7 @@ def main() -> None:
             for e, v in zip(entries, vectors)
         ],
     )
+    client.load_collection(collection_name=config.MILVUS_COLLECTION)
     print(f"Ingested {len(entries)} articles into '{config.MILVUS_COLLECTION}' at {config.MILVUS_URI}")
 
 
