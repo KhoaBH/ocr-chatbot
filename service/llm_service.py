@@ -3,14 +3,19 @@ from models import MergedIssue, RetrievalResult
 from service.azure_client import get_client
 
 SYSTEM_PROMPT = """You are a support assistant. Answer using only the knowledge base articles provided.
-- Give clear, numbered steps the user can follow.
-- If the articles do not cover the issue, say so and ask for the exact error message or a clearer screenshot.
+- Write one separate section for each detected application error code. Start each section with a heading
+  line in this form: **ERROR_CODE: article title**
+- Under each heading, give numbered steps from the article whose codes include that error.
+- Never merge steps from different errors into one list.
+- Ignore plain HTTP status numbers (400, 401, 500) and successful 2xx responses. Only address application error codes.
+- If an error code has no matching article, say so under its own heading and ask for more detail.
 - Do not invent product behavior, settings, or error meanings."""
 
 
 def _context(results: list[RetrievalResult]) -> str:
     return "\n\n".join(
-        f"[Article {i}] {r.entry.title}\n{r.entry.solution}" for i, r in enumerate(results, 1)
+        f"[Article {i}] {r.entry.title}\nCovers codes: {', '.join(r.entry.error_codes)}\n{r.entry.solution}"
+        for i, r in enumerate(results, 1)
     )
 
 
